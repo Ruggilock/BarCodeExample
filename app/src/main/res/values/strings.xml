@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BarCodeExample</string>
+    <string name="barcodevalues">Barcode values :</string>
+    <string name="barcodenofound">No barcode result</string>
+</resources>
