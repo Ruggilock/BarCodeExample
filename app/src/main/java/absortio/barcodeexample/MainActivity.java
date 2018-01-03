@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 
+import java.io.IOException;
+
 import absortio.barcodeexample.model.ModelCodebar;
 import absortio.barcodeexample.utils.Service;
 import absortio.barcodeexample.utils.ServiceInterface;
@@ -58,21 +60,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void saveBarcode(View view) {
-        serviceInterface.saveBarcode(barcode_result.getText().toString()).enqueue(new Callback<ModelCodebar>() {
-            @Override
-            public void onResponse(Call<ModelCodebar> call, Response<ModelCodebar> response) {
+    public void saveBarcode(View view) throws IOException {
 
-            }
-            @Override
-            public void onFailure(Call<ModelCodebar> call, Throwable t) {
-                Context context = getApplicationContext();
-                CharSequence text = "Error No servidor !";
-                int duration = Toast.LENGTH_SHORT;
+        String body = barcode_result.toString();
+        Call<String> call = serviceInterface.saveBarcode(body);
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
+        Response<String> response = call.execute();
     }
 }
