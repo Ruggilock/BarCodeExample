@@ -1,11 +1,13 @@
 package absortio.barcodeexample;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -56,14 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void saveBarcode(View view) {
-        serviceInterface.saveBarcode(barcode_result.toString()).enqueue(new Callback<String>() {
+        serviceInterface.saveBarcode(barcode_result.getText().toString()).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                Context context = getApplicationContext();
+                CharSequence text = "Error No servidor !";
+                int duration = Toast.LENGTH_SHORT;
 
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
     }
