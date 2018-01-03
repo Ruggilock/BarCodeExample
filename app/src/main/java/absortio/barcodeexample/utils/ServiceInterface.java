@@ -1,5 +1,6 @@
 package absortio.barcodeexample.utils;
 
+import absortio.barcodeexample.model.ModelCodebar;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -9,5 +10,5 @@ public interface ServiceInterface {
 
     @POST("saveDefault")
     @FormUrlEncoded
-    Call<String> saveBarcode(@Field("String") String barcode);
+    Call<ModelCodebar> saveBarcode(@Field("String") String barcode);
 }
