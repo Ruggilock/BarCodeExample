@@ -61,7 +61,12 @@ public class MainActivity extends AppCompatActivity {
         serviceInterface.saveBarcode(barcode_result.getText().toString()).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                Context context = getApplicationContext();
+                CharSequence text = "Congrats";
+                int duration = Toast.LENGTH_SHORT;
 
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
