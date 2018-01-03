@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     TextView barcode_result;
     ServiceInterface serviceInterface;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode== CommonStatusCodes.SUCCESS){
                 if(data!=null){
                     Barcode barcode = data.getParcelableExtra("barcode");
-                    saveBarcode(barcode.toString());
+
                     barcode_result.setText(R.string.barcodevalues + barcode.displayValue);
                 }else{
                     barcode_result.setText(R.string.barcodenofound);
@@ -53,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void saveBarcode(final String barcode){
-        serviceInterface.saveBarcode(barcode).enqueue(new Callback<String>() {
+
+    public void saveBarcode(View view) {
+        serviceInterface.saveBarcode(barcode_result.toString()).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println(barcode);
-            }
 
+            }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
 
