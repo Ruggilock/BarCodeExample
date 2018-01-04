@@ -75,9 +75,7 @@ public class ScanBarcodeActivity extends Activity {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-
             }
-
             @Override
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes= detections.getDetectedItems();
