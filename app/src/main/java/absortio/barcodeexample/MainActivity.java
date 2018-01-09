@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
     public void saveBarcode(View view) {
         serviceInterface.saveBarcode(barcode_result.getText().toString()).enqueue(new Callback<String>() {
             @Override
