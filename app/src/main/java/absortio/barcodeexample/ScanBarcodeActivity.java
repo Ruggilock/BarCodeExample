@@ -19,9 +19,6 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-/**
- * Created by ruggi on 12/29/17.
- */
 
 public class ScanBarcodeActivity extends Activity {
     SurfaceView camaraPreview;
@@ -32,6 +29,7 @@ public class ScanBarcodeActivity extends Activity {
         setContentView(R.layout.activity_scan_barcode);
 
         camaraPreview = findViewById(R.id.camara_preview);
+
         createCamaraSource();
     }
 
@@ -46,19 +44,14 @@ public class ScanBarcodeActivity extends Activity {
             @Override
             public void surfaceCreated(SurfaceHolder surfaceHolder) {
                 if (ActivityCompat.checkSelfPermission(ScanBarcodeActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                try {
-                    cameraSource.start(camaraPreview.getHolder());
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                return;
+                }else{
+                    try {
+                        cameraSource.start(camaraPreview.getHolder());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
@@ -72,6 +65,7 @@ public class ScanBarcodeActivity extends Activity {
                 cameraSource.stop();
             }
         });
+
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
