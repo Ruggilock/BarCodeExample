@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 
+import java.io.IOException;
+
 import absortio.barcodeexample.utils.Service;
 import absortio.barcodeexample.utils.ServiceInterface;
 import retrofit2.Call;
@@ -35,9 +37,18 @@ public class MainActivity extends AppCompatActivity {
         barcode_result= findViewById(R.id.barcode_result);
     }
     public void scanBarcode(View v) {
-        ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.CAMERA},
-                1);
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.CAMERA},
+                    1);
+
+        }else{
+            Intent intent = new Intent(this, ScanBarcodeActivity.class);
+            startActivityForResult(intent,0);
+        }
+
+
 
     }
     @SuppressLint("SetTextI18n")
