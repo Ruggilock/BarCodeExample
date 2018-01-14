@@ -51,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+/*
     @SuppressLint("SetTextI18n")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode ==0){
             if(resultCode== CommonStatusCodes.SUCCESS){
+
                 if(data!=null){
                     Barcode barcode = data.getParcelableExtra("barcode");
 
@@ -69,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void saveBarcode(View view) {
+*/
+  /*  public void saveBarcode(View view) {
         serviceInterface.saveBarcode(barcode_result.getText().toString()).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
             }
         });
-    }
+    }*/
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, ScanBarcodeActivity.class);
                     startActivityForResult(intent,0);
                 } else {
-                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Permission denied to use camara", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }

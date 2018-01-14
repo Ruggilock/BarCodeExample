@@ -21,13 +21,13 @@
             android:text="Scan BarCode"
             android:id="@+id/scan_barcode"
             android:onClick="scanBarcode"/>
-        <Button
+        <!--<Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save BarCode"
             android:id="@+id/save_barcode"
             android:onClick="saveBarcode"
-            />
+            />-->
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
